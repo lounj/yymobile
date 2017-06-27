@@ -6,6 +6,7 @@ module.exports = Object.assign({}, commonConfig, {
   port: 8002,
   source: {
     components: './components',
+    yymobile: './yymobile'
   },
   output: './_site/kitchen-sink',
   root: '/kitchen-sink/',

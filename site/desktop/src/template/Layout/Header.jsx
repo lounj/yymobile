@@ -102,12 +102,17 @@ export default class Header extends React.Component {
     const { location, picked, themeConfig } = this.props;
     const { siteTitle } = themeConfig;
     const docVersions = { ...themeConfig.docVersions, [packageVersions]: packageVersions };
-    const components = picked.components;
+    let components;
+    activeMenuItem === 'yymobile' ? components = picked.yymobile : components = picked.components;
     const module = location.pathname.split('/').slice(0, -1).join('/');
     let activeMenuItem = module || 'home';
 
     if (activeMenuItem === 'components' || activeMenuItem === 'docs/react' || location.pathname === 'changelog') {
       activeMenuItem = 'components';
+    }
+
+    if (activeMenuItem === 'yymobile') {
+      activeMenuItem = 'yymobile';
     }
 
     const locale = this.context.intl.locale;
@@ -117,7 +122,8 @@ export default class Header extends React.Component {
       .filter(({ meta }) => !meta.filename.endsWith(excludedSuffix))
       .map(({ meta }) => {
         const pathSnippet = meta.filename.split('/')[1];
-        const url = `/components/${pathSnippet}`;
+        let url;
+        activeMenuItem === 'yymobile' ?  url = `/yymobile/${pathSnippet}` : url = `/components/${pathSnippet}`;
         const subtitle = meta.subtitle;
         return (
           <Option value={url} key={url} data-label={`${(meta.title || meta.english).toLowerCase()} ${meta.subtitle || meta.chinese}`}>
@@ -193,6 +199,11 @@ export default class Header extends React.Component {
               <Menu.Item key="home">
                 <Link to={utils.getLocalizedPathname('/', isZhCN)}>
                   <FormattedMessage id="app.header.menu.home" />
+                </Link>
+              </Menu.Item>
+              <Menu.Item key="docs/yymobile">
+                <Link to={utils.getLocalizedPathname('/docs/yymobile/introduce', isZhCN)}>
+                  <FormattedMessage id="app.header.menu.yymobile" />
                 </Link>
               </Menu.Item>
               <Menu.Item key="docs/react">

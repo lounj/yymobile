@@ -5,6 +5,7 @@ module.exports = Object.assign({}, commonConfig, {
   port: 8001,
   source: {
     components: './components',
+    yymobile: './yymobile',
     docs: './docs',
     changelog: [
       'CHANGELOG.zh-CN.md',

@@ -39,6 +39,16 @@ module.exports = {
       };
       /* eslint-enable consistent-return */
     },
+    yymobile(markdownData) {
+      const filename = markdownData.meta.filename;
+      if (!/^yymobile/.test(filename) ||
+          /\/demo$/.test(path.dirname(filename))) return;
+      /* eslint-disable consistent-return */
+      return {
+        meta: markdownData.meta,
+      };
+      /* eslint-enable consistent-return */
+    },
     /* eslint-disable consistent-return */
     changelog(markdownData) {
       if (/CHANGELOG/.test(markdownData.meta.filename)) {
@@ -49,6 +59,7 @@ module.exports = {
     },
     /* eslint-enable consistent-return */
     'docs/react': pickerGenerator('react'),
+    'docs/yymobile': pickerGenerator('yymobile'),
   },
   plugins: [
     'bisheng-plugin-description',
@@ -72,6 +83,9 @@ module.exports = {
       path: '/docs/react/:children',
       component: contentTmpl,
     }, {
+      path: '/docs/yymobile/:children',
+      component: contentTmpl,
+    }, {
       path: 'changelog',
       component: contentTmpl,
     }, {
@@ -79,6 +93,9 @@ module.exports = {
       component: contentTmpl,
     }, {
       path: '/components/:children',
+      component: contentTmpl,
+    }, {
+      path: '/yymobile/:children',
       component: contentTmpl,
     }],
   },

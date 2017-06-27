@@ -40,7 +40,7 @@ export default class MainContent extends React.Component {
   shouldComponentUpdate(nextProps) {
     const pathname = this.props.location.pathname;
     return pathname !== nextProps.location.pathname ||
-      /^\/components\//i.test(pathname);
+      /^\/components\//i.test(pathname) || /^\/yymobile\//i.test(pathname);
   }
 
   getActiveMenuItem(props) {
@@ -73,7 +73,7 @@ export default class MainContent extends React.Component {
       url = `${url}-cn`;
     }
     const child = !item.link ?
-      (<Link to={/^components/.test(url) ? `${url}/` : url} disabled={disabled}>
+      (<Link to={/^components/.test(url) || /^yymobile/.test(url)? `${url}/` : url} disabled={disabled}>
         {text}
       </Link>) :
       (<a href={item.link} target="_blank" rel="noopener noreferrer" disabled={disabled}>
@@ -114,11 +114,20 @@ export default class MainContent extends React.Component {
     const props = this.props;
     const pathname = props.location.pathname;
     const moduleName = /^components/.test(pathname) ?
-      'components' : pathname.split('/').slice(0, 2).join('/');
-    const moduleData = moduleName === 'components' || moduleName.includes('changelog') || moduleName === 'docs/react' ?
-      [...props.picked.components, ...props.picked['docs/react'], ...props.picked.changelog].filter(item => item.meta.filename.includes(this.context.intl.locale)) :
-      props.picked[moduleName];
-
+      'components' : /^yymobile/.test(pathname) ?
+      'yymobile' : pathname.split('/').slice(0, 2).join('/');
+    let moduleData;
+    // const moduleData = moduleName === 'components' || moduleName.includes('changelog') || moduleName === 'docs/react' ?
+    //   [...props.picked.components, ...props.picked.yymobile, ...props.picked['docs/react'], ...props.picked.changelog].filter(item => item.meta.filename.includes(this.context.intl.locale)) :
+    //   moduleName === 'yymobile' ? [...props.picked.yymobile] : props.picked[moduleName];
+    if (moduleName === 'components' || moduleName.includes('changelog') || moduleName === 'docs/react')
+    {
+      moduleData = [...props.picked.components, ...props.picked.yymobile, ...props.picked['docs/react'], ...props.picked.changelog].filter(item => item.meta.filename.includes(this.context.intl.locale))
+    } else if (moduleName === 'yymobile' || moduleName === 'docs/yymobile') {
+      moduleData = [...props.picked.yymobile, ...props.picked['docs/yymobile'], ...props.picked.changelog]
+    } else {
+      moduleData = props.picked[moduleName]
+    }
     return moduleData;
   }
 

@@ -33,6 +33,16 @@ module.exports = {
       };
       /* eslint-enable consistent-return */
     },
+    yymobile(markdownData) {
+      const filename = markdownData.meta.filename;
+      if (!/^yymobile/.test(filename) ||
+          /\/demo$/.test(path.dirname(filename))) return;
+      /* eslint-disable consistent-return */
+      return {
+        meta: markdownData.meta,
+      };
+      /* eslint-enable consistent-return */
+    },
     /* eslint-disable consistent-return */
     indexDemos(markdownData) {
       const paths = markdownData.meta.filename.split('/');
@@ -54,6 +64,9 @@ module.exports = {
     component: './template/KitchenSink/index',
   }, {
     path: '/components/:component',
+    component: './template/KitchenSink/Demo',
+  }, {
+    path: '/yymobile/:component',
     component: './template/KitchenSink/Demo',
   }],
 };
