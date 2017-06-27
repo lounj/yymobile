@@ -202,7 +202,7 @@ export default class Header extends React.Component {
                 </Link>
               </Menu.Item>
               <Menu.Item key="docs/yymobile">
-                <Link to={utils.getLocalizedPathname('/docs/yymobile/introduce', isZhCN)}>
+                <Link to={utils.getLocalizedPathname('/docs/yymobile/getting-started', isZhCN)}>
                   <FormattedMessage id="app.header.menu.yymobile" />
                 </Link>
               </Menu.Item>
