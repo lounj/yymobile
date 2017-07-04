@@ -15,6 +15,7 @@ module.exports = {
 
     config.resolve.alias = {
       'antd-mobile/lib': path.join(process.cwd(), 'components'),
+      'yymobile': path.join(process.cwd(), 'yymobile'),
       'antd-mobile': process.cwd(),
       site: path.join(process.cwd(), 'site'),
       // in case you want to develop with local rc-component
@@ -32,7 +33,10 @@ module.exports = {
       {
         libraryName: 'antd-mobile',
         libraryDirectory: 'components',
-      },
+      }, {
+        libraryName: 'yymobile',
+        libraryDirectory: 'yymobile',
+      }
     ]);
     return config;
   },

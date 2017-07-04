@@ -6,6 +6,8 @@ import { getQuery } from '../../../../utils';
 
 @collect(async (nextProps) => {
   const pathname = nextProps.location.pathname;
+  // 区分yymobile还有components
+  const prePath = pathname.split('/')[0]
   const pageDataPath = pathname.replace('-cn', '').split('/');
   const pageData = nextProps.utils.get(nextProps.data, pageDataPath);
   if (!pageData) {
@@ -15,7 +17,7 @@ import { getQuery } from '../../../../utils';
   const locale = getQuery('lang') || 'en-US';
   const pageDataPromise = typeof pageData === 'function' ?
     pageData() : (pageData[locale] || pageData.index[locale] || pageData.index)();
-  const demosFetcher = nextProps.utils.get(nextProps.data, ['components', nextProps.params.component, 'demo']);
+  const demosFetcher = nextProps.utils.get(nextProps.data, [prePath, nextProps.params.component, 'demo']);
   if (demosFetcher) {
     const [localizedPageData, demos] = await Promise.all([pageDataPromise, demosFetcher()]);
     return { localizedPageData, demos, locale };
@@ -42,7 +44,14 @@ export default class Demo extends React.Component {
     const { demos, location, picked, themeConfig: config, locale } = this.props;
     let demoMeta;
     const name = this.props.params.component;
+    console.log(name)
     picked.components.forEach((i) => {
+      const meta = i.meta;
+      if (meta.filename.split('/')[1] === name) {
+        demoMeta = meta;
+      }
+    });
+    picked.yymobile.forEach((i) => {
       const meta = i.meta;
       if (meta.filename.split('/')[1] === name) {
         demoMeta = meta;

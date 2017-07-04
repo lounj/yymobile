@@ -9,7 +9,11 @@ const pluginAntdConfig = {
           style: true,
           libraryName: 'antd-mobile',
           libraryDirectory: 'components',
-        },
+        }, {
+          style: true,
+          libraryName: 'yymobile',
+          libraryDirectory: 'yymobile',
+        }
       ],
     ],
   },

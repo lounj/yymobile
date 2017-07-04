@@ -21,7 +21,6 @@ export { default as ListView } from './list-view/index.web';
 export { default as Menu } from './menu/index.web';
 export { default as Modal } from './modal/index.web';
 export { default as NavBar } from './nav-bar/index.web';
-export { default as YyBar } from './yy-bar/index.web';
 export { default as NoticeBar } from './notice-bar/index.web';
 
 export { default as Pagination } from './pagination/index.web';

@@ -132,10 +132,12 @@ export default class ComponentDoc extends React.Component {
     });
 
     const protocol = window.location.protocol;
+    // 判断是yymobile还是components
+    const prePath = doc.meta.filename.split('/')[0];
     const path = doc.meta.filename.split('/')[1];
     const isLocalMode = window.location.port;
     const host = isLocalMode ? 'localhost:8002' : window.location.host;
-    const demoUrl = `${protocol}//${host}/kitchen-sink/components/${path}`;
+    const demoUrl = `${protocol}//${host}/kitchen-sink/${prePath}/${path}`;
 
     const PopoverContent = (<div>
       <h4 style={{ margin: '8Px 0 12Px', textAlign: 'center' }}><FormattedMessage id="app.ComponentDoc.codeQrcode" /></h4>
@@ -144,7 +146,7 @@ export default class ComponentDoc extends React.Component {
 
     const { title, subtitle, chinese, english } = meta;
     const hash = `#${path}-demo-${currentIndex}`;
-    const mainPath = isLocalMode ? 'components' : 'kitchen-sink/components';
+    const mainPath = isLocalMode ? prePath : `kitchen-sink/${prePath}`;
     const search = this.context.intl.locale === 'zh-CN' ? '?lang=zh-CN' : '?lang=en-US';
     const iframeUrl = `${protocol}//${host}/${mainPath}/${path}${search}${hash}`;
 
