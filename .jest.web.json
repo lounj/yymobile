@@ -25,7 +25,9 @@
   "testRegex": ".*\\.test\\.web\\.js$",
   "collectCoverageFrom": [
     "components/**/*.web.{ts,tsx}",
-    "!components/*/style/index.tsx"
+    "!components/*/style/index.tsx",
+    "yymobile/**/*.web.js",
+    "!components/*/style/index.js"
   ],
   "testEnvironment": "jsdom"
 }
