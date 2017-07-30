@@ -70,6 +70,34 @@ export default class App extends React.Component {
         }
       });
 
+      picked.yymobile
+        .filter(item => item.meta.filename.includes(appLocale.locale))
+        .forEach((i) => {
+          const meta = i.meta;
+          if (!lists[meta.type]) {
+            lists[meta.type] = [];
+          }
+          const fileName = meta.filename.split('/')[1];
+          if (fileName && config.indexDemos.indexOf(fileName) > -1) {
+            // add demos
+            const demos = [];
+            picked.indexDemos.forEach((j) => {
+              if (j.component === fileName) {
+                demos.push(j.meta);
+              }
+            });
+            meta.demos = demos;
+          }
+          const source = getQuery('source');
+          if (source && source === 'design') {
+            if (meta.source && meta.source === 'design') {
+              lists[meta.type].push(meta);
+            }
+          } else {
+            lists[meta.type].push(meta);
+          }
+        });
+
     let rootPath = '/kitchen-sink/components';
     if (window.location.port === '8002') {
       rootPath = '/components';
@@ -111,9 +139,12 @@ export default class App extends React.Component {
                           <List.Item
                             arrow="horizontal"
                             key={`${j.filename}-${cate}`}
-                            onClick={() => location.href = `${rootPath}/${paths[1]}${this.addSearch()}#${
-                              paths[1] + config.hashSpliter + j.order
-                            }`}
+                            onClick={() => {
+                              let baseRoot = paths[0] === 'yymobile' ? paths[0] : rootPath;
+                              return location.href = `${baseRoot}/${paths[1]}${this.addSearch()}#${
+                              paths[1] + config.hashSpliter + j.order}`
+                            }
+                          }
                           >
                             {`${item.title} ${appLocale.locale === 'zh-CN' ? item.subtitle : ''}-${j.title[appLocale.locale]}`}
                           </List.Item>
@@ -123,7 +154,10 @@ export default class App extends React.Component {
                         <List.Item
                           arrow="horizontal"
                           key={`${item.filename}-${cate}`}
-                          onClick={() => { location.href = `${rootPath}/${paths[1]}${this.addSearch()}`; }}
+                          onClick={() => {
+                            let baseRoot = paths[0] === 'yymobile' ? paths[0] : rootPath;
+                            location.href = `${baseRoot}/${paths[1]}${this.addSearch()}`;
+                          }}
                         >
                           {`${item.title} `}
                           {!item.subtitle || appLocale.locale === 'en-US' ? null : item.subtitle}

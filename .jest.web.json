@@ -26,8 +26,7 @@
   "collectCoverageFrom": [
     "components/**/*.web.{ts,tsx}",
     "!components/*/style/index.tsx",
-    "yymobile/**/*.web.js",
-    "!components/*/style/index.js"
+    "yymobile/**/*.web.js"
   ],
   "testEnvironment": "jsdom"
 }

@@ -16,7 +16,7 @@ describe('Accordion', () => {
       </Accordion>,
     );
     expect(renderToJson(wrapper)).toMatchSnapshot();
-    expect(wrapper.find('.am-accordion')).toHaveLength(1);
+    expect(wrapper.find('.yy-accordion')).toHaveLength(1);
   });
 
   it('renders accordion prop correctly', () => {
@@ -31,8 +31,8 @@ describe('Accordion', () => {
       </Accordion>,
     );
     // accordion props make only one active panel
-    wrapper.find('.am-accordion-header').at(0).simulate('click');
-    wrapper.find('.am-accordion-header').at(1).simulate('click');
-    expect(wrapper.find('.am-accordion-item').at(1).hasClass('am-accordion-item-active')).toBe(true);
+    wrapper.find('.yy-accordion-header').at(0).simulate('click');
+    wrapper.find('.yy-accordion-header').at(1).simulate('click');
+    expect(wrapper.find('.yy-accordion-item').at(1).hasClass('yy-accordion-item-active')).toBe(true);
   });
 });

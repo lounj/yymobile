@@ -1,7 +1,7 @@
 ---
 order: 0
 title:
-  zh-CN: 导航栏
+  zh-CN: 测试
   en-US: YyBar
 ---
 
