@@ -19,12 +19,12 @@ if(fs.existsSync(path.join(__dirname,'../dist'))) {
         yymobileLessContent += `@import "../${path.join(file, 'style', 'index.less')}";\n`
       }
     });
-    fs.writeFileSync(path.join(process.cwd(), 'lib', 'style', 'yymobile.less'), yymobileLessContent);
+    fs.writeFileSync(path.join(process.cwd(), 'yymobile', 'style', 'components.less'), yymobileLessContent);
 
     // Build less entry file: dist/antd.less
     fs.writeFileSync(
       path.join(process.cwd(), 'dist', 'yy-mobile.less'),
-      '@import "../lib/style/index.less";\n@import "../lib/style/components.less";'
+      '@import "../yymobile/style/index.less";\n@import "../yymobile/style/components.less";'
     );
   });
 }
