@@ -7,7 +7,8 @@ title:
 
 
 ````jsx
-import { Icon, Grid } from 'antd-mobile';
+import { Grid } from 'antd-mobile';
+import { Icon } from 'yymobile';
 
 const icons = [
   'check-circle', 'check', 'check-circle-o',

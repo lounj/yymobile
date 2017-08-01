@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = (config, includeDemo) => {
   let svgDirs = [
     path.resolve(__dirname, 'components/icon/style/assets/'),
+    path.resolve(__dirname, 'yymobile/icon/style/assets/'),
     path.resolve(__dirname, 'components/notice-bar/style/assets/'),
     path.resolve(__dirname, 'components/toast/style/assets/'),
     path.resolve(__dirname, 'components/stepper/style/assets/'),
@@ -11,6 +12,7 @@ module.exports = (config, includeDemo) => {
     svgDirs = svgDirs.concat([
       path.resolve(__dirname, 'components/steps/demo/'),
       path.resolve(__dirname, 'components/icon/demo/'),
+      path.resolve(__dirname, 'yymobile/icon/demo/'),
       path.resolve(__dirname, 'components/popover/demo/'),
       path.resolve(__dirname, 'components/action-sheet/demo/'),
       path.resolve(__dirname, 'components/result/demo/'),

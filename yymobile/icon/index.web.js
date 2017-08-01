@@ -1,19 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-// http://stackoverflow.com/questions/29891458/webpack-require-every-file-in-directory
-// const svgRequire = (require as any).context('./style/assets', false, /\.svg$/);
-// svgRequire.keys().forEach(key => svgRequire(key));
-declare const require: Function;
-export interface IconPropType {
-  type: string;
-  className?: string;
-  style?: React.CSSProperties;
-  size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg';
-  onClick?: (e?: any) => void;
-}
-
-export default class Icon extends React.Component<IconPropType, any> {
+export default class Icon extends React.Component {
   static defaultProps = {
     size: 'md',
   };
@@ -22,6 +10,7 @@ export default class Icon extends React.Component<IconPropType, any> {
     let svg;
     try {
       svg = require(`./style/assets/${this.props.type}.svg`);
+      console.log('svg', svg)
     } catch (e) {
 
     } finally {
@@ -30,7 +19,9 @@ export default class Icon extends React.Component<IconPropType, any> {
   }
   render() {
     const { type, className, style, size, ...restProps } = this.props;
+
     let xlinkHref = this.renderSvg();
+    console.log('this.render', xlinkHref)
     let outerIcon;
     if (!xlinkHref) {
       outerIcon = true;
@@ -42,7 +33,7 @@ export default class Icon extends React.Component<IconPropType, any> {
       'am-icon': true,
       [`am-icon-${outerIcon ? type.substr(1) : type}`]: true,
       [`am-icon-${size}`]: true,
-      [className as string]: !!className,
+      [className + '']: !!className,
     });
     return <svg className={iconClassName} style={style} {...restProps}>
       <use xlinkHref={xlinkHref} />
