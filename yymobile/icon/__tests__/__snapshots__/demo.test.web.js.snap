@@ -537,3 +537,139 @@ exports[`renders ./components/icon/demo/size.md correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`renders ./yymobile/icon/demo/size.md correctly 1`] = `
+<div
+  class="am-grid"
+>
+  <div
+    class="am-flexbox am-flexbox-justify-center am-flexbox-align-stretch"
+  >
+    <div
+      class="am-flexbox-item am-grid-item"
+      style="width:20%;"
+    >
+      <div
+        class="am-grid-item-content"
+      >
+        <div
+          class="am-grid-item-inner-content column-num-5"
+        >
+          <svg
+            class="am-icon am-icon-search am-icon-xxs"
+          >
+            <use
+              xlink:href="#search"
+            />
+          </svg>
+          <div
+            class="am-grid-text"
+          >
+            xxs
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="am-flexbox-item am-grid-item"
+      style="width:20%;"
+    >
+      <div
+        class="am-grid-item-content"
+      >
+        <div
+          class="am-grid-item-inner-content column-num-5"
+        >
+          <svg
+            class="am-icon am-icon-search am-icon-xs"
+          >
+            <use
+              xlink:href="#search"
+            />
+          </svg>
+          <div
+            class="am-grid-text"
+          >
+            xs
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="am-flexbox-item am-grid-item"
+      style="width:20%;"
+    >
+      <div
+        class="am-grid-item-content"
+      >
+        <div
+          class="am-grid-item-inner-content column-num-5"
+        >
+          <svg
+            class="am-icon am-icon-search am-icon-sm"
+          >
+            <use
+              xlink:href="#search"
+            />
+          </svg>
+          <div
+            class="am-grid-text"
+          >
+            sm
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="am-flexbox-item am-grid-item"
+      style="width:20%;"
+    >
+      <div
+        class="am-grid-item-content"
+      >
+        <div
+          class="am-grid-item-inner-content column-num-5"
+        >
+          <svg
+            class="am-icon am-icon-search am-icon-md"
+          >
+            <use
+              xlink:href="#search"
+            />
+          </svg>
+          <div
+            class="am-grid-text"
+          >
+            md
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="am-flexbox-item am-grid-item"
+      style="width:20%;"
+    >
+      <div
+        class="am-grid-item-content"
+      >
+        <div
+          class="am-grid-item-inner-content column-num-5"
+        >
+          <svg
+            class="am-icon am-icon-search am-icon-lg"
+          >
+            <use
+              xlink:href="#search"
+            />
+          </svg>
+          <div
+            class="am-grid-text"
+          >
+            lg
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
