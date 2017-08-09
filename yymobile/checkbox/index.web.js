@@ -6,14 +6,18 @@ import AgreeItem from './AgreeItem.web'
 export default class Checkbox extends React.Component {
 
   static defaultProps = {
-    prefixCls: 'yy-checkbox'
+    prefixCls: 'yy-checkbox',
+    multiSelect: false
   };
 
   render() {
-    const { prefixCls } = this.props
+    let { prefixCls, className, multiSelect } = this.props
+    if (multiSelect) {
+      className = className + 'yy-checkbox-multi'
+    }
     console.log(prefixCls)
     return (
-      <_Checkbox {...this.props}>
+      <_Checkbox {...this.props} className={className} >
       </_Checkbox>);
   }
 }

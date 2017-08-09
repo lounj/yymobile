@@ -18,22 +18,21 @@
     width: @icon-size-sm;
     height: @icon-size-sm;
     border: 3px solid @color-text-caption;
-    border-radius: @radius-xs;
+    border-radius: @radius-circle;
     transform: rotate(0deg);
     box-sizing: border-box;
 
     &:after {
       position: absolute;
       display: none;
-      top: 3px;
-      right: 12px;
+      top: @icon-size-sm / 2 - @icon-size-xxs / 2 - 3;
+      right: @icon-size-sm / 2 - @icon-size-xxs / 2 - 3;
       z-index: 999;
-      width: 10px;
-      height: 22px;
-      border-style: solid;
-      border-width: 0 3px 3px 0;
+      width: @icon-size-xxs;
+      height: @icon-size-xxs;
+      border-radius: @radius-circle;
+      background-color: @brand-primary;
       content: '\0020';
-      transform: rotate(45deg);
     }
   }
 
@@ -52,7 +51,7 @@
   &.@{checkboxWarpPrefixCls}-checked {
     .@{checkboxInnerPrefixCls} {
       border-color: @brand-primary;
-      background-color: @brand-primary;
+      background-color: @color-text-base-inverse;
 
       &:after {
         display: block;
@@ -67,7 +66,7 @@
     &.@{checkboxWarpPrefixCls}-checked {
       .@{checkboxInnerPrefixCls} {
         border-color: @brand-primary;
-        background-color: @brand-primary;
+        background-color: @color-text-base-inverse;
 
         &:after {
           border-color: @color-text-base-inverse;
@@ -145,6 +144,60 @@
       &:active,
       &:hover {
         color: @brand-primary-tap;
+      }
+    }
+  }
+}
+
+.@{checkboxWarpPrefixCls}-multi {
+  .@{checkboxWarpPrefixCls}-inner {
+    position: absolute;
+    right: 0;
+    width: @icon-size-sm;
+    height: @icon-size-sm;
+    border: 3px solid @color-text-caption;
+    border-radius: @radius-xs;
+    transform: rotate(0deg);
+    box-sizing: border-box;
+
+    &:after {
+      position: absolute;
+      display: none;
+      top: 3px;
+      right: 12px;
+      z-index: 999;
+      width: 10px;
+      height: 22px;
+      border-style: solid;
+      border-width: 0 3px 3px 0;
+      border-radius: 0;
+      content: '\0020';
+      transform: rotate(45deg);
+    }
+  }
+  .@{checkboxWarpPrefixCls}-checked {
+    .@{checkboxInnerPrefixCls} {
+      border-color: @brand-primary;
+      background-color: @brand-primary;
+
+      &:after {
+        display: block;
+        border-color: @color-text-base-inverse;
+      }
+    }
+  }
+
+  .@{checkboxWarpPrefixCls}-disabled {
+    opacity: @opacity-disabled;
+
+    &.@{checkboxWarpPrefixCls}-checked {
+      .@{checkboxInnerPrefixCls} {
+        border-color: @brand-primary;
+        background-color: @brand-primary;
+
+        &:after {
+          border-color: @color-text-base-inverse;
+        }
       }
     }
   }
