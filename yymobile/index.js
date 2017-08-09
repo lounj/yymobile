@@ -6,4 +6,6 @@ export { default as Button } from './button/index.web';
 
 export { default as Checkbox } from './checkbox/index.web';
 
+export { default as Switch } from './switch/index.web';
+
 export { default as Icon } from './icon/index.web';
