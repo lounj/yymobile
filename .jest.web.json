@@ -17,6 +17,10 @@
     "_site",
     "site"
   ],
+  "moduleDirectories": [
+    "node_modules",
+    "yymobile"
+  ],
   "transform": {
     "\\.tsx?$": "./node_modules/typescript-babel-jest",
     "\\.js$": "./node_modules/babel-jest",
@@ -26,7 +30,8 @@
   "collectCoverageFrom": [
     "components/**/*.web.{ts,tsx}",
     "!components/*/style/index.tsx",
-    "yymobile/**/*.web.js"
+    "yymobile/**/*.web.js",
+    "!components/*/style/index.js"
   ],
   "testEnvironment": "jsdom"
 }

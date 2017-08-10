@@ -8,4 +8,6 @@ export { default as Checkbox } from './checkbox/index.web';
 
 export { default as Switch } from './switch/index.web';
 
+export { default as Modal } from './modal/index.web';
+
 export { default as Icon } from './icon/index.web';
