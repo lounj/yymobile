@@ -24,11 +24,25 @@ export default function a(...args) {
     data[inputType] =  target.value;
   }
 
+  function onBlur(e) {
+    const target = e.target;
+    console.log('onBlur', target)
+    target.className = '';
+  }
+
+  function onFocus(e) {
+    const target = e.target;
+    console.log('focus', target)
+    target.className = `${prefixCls}-input--focus`;
+  }
+
   let inputDom;
 
   const focusFn = function(input) {
     setTimeout(() => {
       if (input) {
+        console.dir(input)
+        // input.className = `${prefixCls}-input--focus`
         input.focus();
       }
     }, 500);
@@ -51,7 +65,7 @@ export default function a(...args) {
       inputDom = (
         <div>
           <div className={`${prefixCls}-input`}>
-            <input type="password" defaultValue="" ref={input => focusFn(input)} onChange={onChange} />
+            <input type="password" defaultValue="" onBlur={onBlur} onFocus={onFocus} ref={input => focusFn(input)} onChange={onChange} />
           </div>
         </div>
       );
@@ -62,7 +76,7 @@ export default function a(...args) {
       inputDom = (
         <div>
           <div className={`${prefixCls}-input`}>
-            <input type="text" defaultValue={defaultValue} ref={input => focusFn(input)} onChange={onChange} />
+            <input type="text" defaultValue={defaultValue} onBlur={onBlur} onFocus={onFocus} ref={input => focusFn(input)} onChange={onChange} />
           </div>
         </div>
       );
