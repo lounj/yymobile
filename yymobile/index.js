@@ -10,4 +10,6 @@ export { default as Switch } from './switch/index.web';
 
 export { default as Modal } from './modal/index.web';
 
+export { default as Progress } from './progress/index.web';
+
 export { default as Icon } from './icon/index.web';

@@ -1,0 +1,39 @@
+@import '../../style/mixins';
+@import '../../style/themes/default';
+
+@pickerPrefixClass: yy-progress;
+
+.@{pickerPrefixClass} {
+  &-outer {
+    background-color: @border-color-base;
+    display: block;
+  }
+
+  &-fixed-outer {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: @progress-zindex;
+  }
+
+  &-hide-outer {
+    background-color: transparent;
+  }
+
+  &-bar {
+    border: @border-width-lg solid @brand-primary;
+    transition: all .3s linear 0s;
+    position: relative;
+    .@{pickerPrefixClass}-dot {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: @radius-circle;
+      background: @brand-primary;
+      top: -16px;
+      right: -4px;
+      transition: all .3s linear 0s;
+    }
+  }
+}
