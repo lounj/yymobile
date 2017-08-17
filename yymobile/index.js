@@ -12,4 +12,6 @@ export { default as Modal } from './modal/index.web';
 
 export { default as Progress } from './progress/index.web';
 
+export { default as Carousel } from './carousel/index.web';
+
 export { default as Icon } from './icon/index.web';

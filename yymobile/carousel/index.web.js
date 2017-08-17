@@ -1,0 +1,102 @@
+import React from 'react';
+import createReactClass from 'create-react-class';
+import classNames from 'classnames';
+import ReactCarousel from 'rmc-nuka-carousel';
+import assign from 'object-assign';
+
+export default class Carousel extends React.Component {
+  static defaultProps = {
+    prefixCls: 'yy-carousel',
+    dots: true,
+    arrows: false,
+    autoplay: false,
+    infinite: false,
+    edgeEasing: 'linear',
+    cellAlign: 'center',
+    selectedIndex: 0,
+    dotStyle: {},
+    dotActiveStyle: {},
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedIndex: this.props.selectedIndex,
+    };
+  }
+
+  onChange = (index) => {
+    this.setState({
+      selectedIndex: index,
+    }, () => {
+      if (this.props.afterChange) {
+        this.props.afterChange(index);
+      }
+    });
+  }
+
+  render() {
+    const { className, prefixCls, dotStyle, dotActiveStyle } = this.props;
+    let props = assign({}, this.props);
+    props = assign(props, {
+      wrapAround: props.infinite,
+      slideIndex: props.selectedIndex,
+      beforeSlide: props.beforeChange,
+    });
+
+    let Decorators = [];
+    const current = this.state.selectedIndex;
+    if (props.dots) {
+      Decorators = [{
+        component: createReactClass({
+          render() {
+            const { slideCount, slidesToScroll } = this.props;
+            const arr = [];
+            for (let i = 0; i < slideCount; i += slidesToScroll) {
+              arr.push(i);
+            }
+            const dotDom = arr.map(function(index) {
+              const dotCls = classNames({
+                [`${prefixCls}-wrap-dot`]: true,
+                [`${prefixCls}-wrap-dot-active`]: index === current,
+              });
+              const _dotStyle = index === current ? dotActiveStyle : dotStyle;
+              return (
+                <div className={dotCls} key={index}>
+                  <span style={_dotStyle} />
+                </div>
+              );
+            });
+            return (
+              <div className={`${prefixCls}-wrap`}>
+                {dotDom}
+              </div>
+            );
+          },
+        }),
+        position: 'BottomCenter',
+      }];
+    }
+
+    ['infinite', 'selectedIndex', 'beforeChange', 'afterChange', 'dots'].forEach(prop => {
+      if (props.hasOwnProperty(prop)) {
+        delete props[prop];
+      }
+    });
+
+    const wrapCls = classNames({
+      [className + '']: className,
+      [prefixCls + '']: true,
+      [`${prefixCls}-vertical`]: props.vertical,
+    });
+
+    return (
+      <ReactCarousel
+        {...props}
+        className={wrapCls}
+        decorators={Decorators}
+        afterSlide={this.onChange}
+      />
+    );
+  }
+}
