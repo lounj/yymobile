@@ -13,7 +13,7 @@ export default class Badge extends React.Component<any> {
   render() {
     let {
       className, prefixCls,
-      children, text, size, overflowCount, dot, corner, hot, ...restProps,
+      children, text, size, overflowCount, dot, corner, hot
     } = this.props;
     // overflowCount = overflowCount as number;
     text = typeof text === 'number' && text > overflowCount ? `${overflowCount}...` : text;
@@ -43,7 +43,7 @@ export default class Badge extends React.Component<any> {
     return (
       <span className={badgeCls}>
         {children}
-        {(text || dot) && <sup className={scrollNumberCls} {...restProps}>{text}</sup>}
+        {(text || dot) && <sup className={scrollNumberCls}>{text}</sup>}
       </span>
     );
   }
