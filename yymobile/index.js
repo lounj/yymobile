@@ -4,6 +4,8 @@ export { default as Accordion } from './accordion/index.web';
 
 export { default as Button } from './button/index.web';
 
+export { default as Badge } from './badge/index.web';
+
 export { default as Checkbox } from './checkbox/index.web';
 
 export { default as Switch } from './switch/index.web';
